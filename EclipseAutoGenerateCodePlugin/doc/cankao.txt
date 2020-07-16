@@ -2,6 +2,7 @@ https://github.com/hilinw/EclipseAutoGenerateCodePlugin.git
 
 4、插件中获取路径
 
+
 复制代码
 
 // 得到插件所在的路径
