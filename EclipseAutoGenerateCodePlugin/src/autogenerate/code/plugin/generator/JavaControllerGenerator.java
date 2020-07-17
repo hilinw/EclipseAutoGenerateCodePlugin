@@ -478,7 +478,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append("\n\t*");
 		sb.append("\n\t*@param parameterObject 参数表");
 		sb.append("\n\t*@param ");
-		sb.append(voName);
+		sb.append(varName);
 		sb.append("\n\t*/");
 		
 		sb.append("\n\t");

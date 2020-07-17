@@ -506,7 +506,7 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 		sb.append("\n\t* 校验");
 		sb.append("\n\t*");
 		sb.append("\n\t* @param ");
-		sb.append(voName).append(" ").append(varName);
+		sb.append(varName);
 		sb.append("\n\t*/");
 		
 		sb.append("\n\t");
