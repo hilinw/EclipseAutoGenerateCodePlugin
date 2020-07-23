@@ -510,7 +510,9 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 		sb.append("\n\t*/");
 		
 		sb.append("\n\t");
-		sb.append("public void validate(ExampleFileVO exampleFileVO) throws Exception {");
+		sb.append("public void validate(");
+		sb.append(voName).append(" ").append(varName);
+		sb.append(") throws Exception {");
 		sb.append("\n\t\t");
 		sb.append("// 非空校验");
 		sb.append(getValidateNotnull(voName,varName));
