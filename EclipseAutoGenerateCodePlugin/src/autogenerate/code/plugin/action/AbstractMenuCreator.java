@@ -3,7 +3,6 @@ package autogenerate.code.plugin.action;
 
 
 import java.net.URL;
-import org.eclipse.jface.resource.CompositeImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;

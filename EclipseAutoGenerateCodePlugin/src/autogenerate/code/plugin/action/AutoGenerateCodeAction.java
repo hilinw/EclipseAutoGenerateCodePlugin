@@ -18,7 +18,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * not used
- * 不用子菜单，这个类不用了
+ * 
  * @author wlh
  * @deprecated
  */
