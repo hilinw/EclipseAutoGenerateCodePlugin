@@ -1,0 +1,66 @@
+https://github.com/hilinw/EclipseAutoGenerateCodePlugin.git
+
+4、插件中获取路径
+
+
+复制代码
+
+// 得到插件所在的路径
+Platform.asLocalURL(Platform.getBundle("your plugin ID").getEntry("")).getFile();
+
+// 得到当前工作空间的路径
+Platform.getInstanceLocation().getURL().getFile();
+
+// 得到当前工作空间下的所有工程
+ResourcesPlugin.getWorkspace().getRoot().getProjects();
+
+// 得到某 PLUGIN 的路径:
+Platform.getBundle("mypluginid").getLocation().
+// eclipse采用osgi后好像还可以:
+Activator.getDefault().getBundle().getLocation(); //前提是这个插件有Activator这个类.这个类继承了ECLIPSE的Plugin类
+// eclipse采用osgi前好像好像是:
+MyPlugin.getDefault().getBundle().getLocation(); //前提是这个插件有MyPlugin这个类.这个类继承了ECLIPSE的Plugin类
+
+// 得到工作区路径:
+Platform.getlocation();
+// 或 ResourcesPlugin.getWorkspace(); 好像 Platform.getInstanceLocation() 也可行
+
+// 得到ECLIPSE安装路径
+Platform.getInstallLocation();
+
+// 从插件中获得绝对路径：
+AaaaPlugin.getDefault().getStateLocation().makeAbsolute().toFile().getAbsolutePath();
+
+// 通过文件得到 Project：
+IProject project = ((IFile)o).getProject();
+
+// 通过文件得到全路径：
+String path = ((IFile)o).getLocation().makeAbsolute().toFile().getAbsolutePath();
+
+// 得到整个Workspace的根：
+IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+
+// 从根来查找资源：
+IResource resource = root.findMember(new Path(containerName));
+
+// 从Bundle来查找资源：
+Bundle bundle = Platform.getBundle(pluginId);
+URL fullPathString = BundleUtility.find(bundle, filePath);
+
+// 得到 Appliaction workspace：
+Platform.asLocalURL(PRODUCT_BUNDLE.getEntry("")).getPath()).getAbsolutePath();
+
+// 得到 runtimeworkspace：
+Platform.getInstanceLocation().getURL().getPath();
+
+// 从编辑器来获得编辑文件
+IEditorPart editor = ((DefaultEditDomain)(parent.getViewer().getEditDomain())).getEditorPart();
+IEditorInput input = editor.getEditorInput();
+if(input instanceof IFileEditorInput)
+{
+IFile file = ((IFileEditorInput)input).getFile();
+}
+
+// 获取插件的绝对路径：
+FileLocator.resolve(BuildUIPlugin.getDefault().getBundle().getEntry("/")).getFile();
+复制代码

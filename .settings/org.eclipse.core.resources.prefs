@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/autogenerate/code/plugin/dialog/CodeGenDialog.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/CodeGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/DDLGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/JavaControllerGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/JavaDaoGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/JavaEntityGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/JavaServiceGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/generator/SqlMappingGenerator.java=UTF-8
+encoding//src/autogenerate/code/plugin/tools/IOUtils.java=UTF-8
