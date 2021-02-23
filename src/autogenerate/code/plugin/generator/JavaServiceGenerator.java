@@ -549,14 +549,15 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 				continue;
 			}
 			if(fieldType.equals("boolean")) {
-				sb.append("\n\t\t");
-				sb.append("validateFieldNotZero(\"");
-				sb.append(soruceFieldName);
-				sb.append("\", ");
-				sb.append(varName);
-				sb.append(".is");
-				sb.append(fieldName);
-				sb.append("());");
+				//boolean 不可能空
+//				sb.append("\n\t\t");
+//				sb.append("validateFieldNotZero(\"");
+//				sb.append(soruceFieldName);
+//				sb.append("\", ");
+//				sb.append(varName);
+//				sb.append(".is");
+//				sb.append(fieldName);
+//				sb.append("());");
 				
 			}else if(fieldType.equals("int") || fieldType.equals("short") || fieldType.equals("long")
 					|| fieldType.equals("float") || fieldType.equals("double") || fieldType.equals("byte")) {
