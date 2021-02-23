@@ -480,7 +480,7 @@ public class SqlMappingGenerator {
 			if(isLikeField(field.getName()) ) {
 				sb.append(" like '%${");
 				sb.append(field.getName());
-				sb.append("}%");
+				sb.append("}%'");
 			}else {
 				sb.append(" = #{");
 				sb.append(field.getName());

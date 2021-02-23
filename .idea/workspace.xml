@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e84ea704-3f55-48bc-8be8-d435df31acb3" name="Default Changelist" comment="" />
+    <list default="true" id="e84ea704-3f55-48bc-8be8-d435df31acb3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +68,19 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
@@ -84,6 +99,8 @@
       <workItem from="1612490876130" duration="632000" />
       <workItem from="1612580193257" duration="340000" />
       <workItem from="1614047901722" duration="71000" />
+      <workItem from="1614050169189" duration="34000" />
+      <workItem from="1614060279640" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="wlh提交">
       <created>1612491032517</created>
@@ -134,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614047950135</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="wlh提交">
+      <created>1614050186539</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614050186539</updated>
+    </task>
+    <task id="LOCAL-00009" summary="wlh提交 增加使用like查询的字段">
+      <created>1614060307477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614060307477</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -178,7 +209,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="wlh提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="wlh提交" />
+    <MESSAGE value="wlh提交 增加使用like查询的字段" />
+    <option name="LAST_COMMIT_MESSAGE" value="wlh提交 增加使用like查询的字段" />
   </component>
   <component name="masterDetails">
     <states>
