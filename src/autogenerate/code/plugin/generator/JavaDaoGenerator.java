@@ -52,10 +52,10 @@ public class JavaDaoGenerator extends JavaFileGenerator {
 		// 导入import
 		sb.append("import java.util.List;\n");
 		sb.append("import java.util.Map;\n");
-		sb.append("\n");
 		//sb.append(this.generateImports());
 		
 		if(!isSameDir()) {
+			sb.append("\n");
 			sb.append("import ");
 			sb.append(packageName);
 			sb.append(".vo.");

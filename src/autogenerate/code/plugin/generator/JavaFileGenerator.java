@@ -210,12 +210,12 @@ public abstract class JavaFileGenerator {
 		sb.append("\n").append(tab);
 		sb.append("/**");
 		sb.append("\n").append(tab);
-		sb.append("* ");
+		sb.append(" * ");
 //        sb.append(getAnnotateText(psiAnnotation, "content", addBeforeStr));
 		sb.append(addBeforeStr);
 		sb.append(annotation.content());
 		sb.append("\n").append(tab);
-		sb.append("*/");
+		sb.append(" */");
 
 		return sb.toString();
 

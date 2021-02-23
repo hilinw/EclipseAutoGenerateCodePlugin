@@ -54,9 +54,9 @@ public class JavaEntityGenerator extends JavaFileGenerator {
 		sb.append(getCommentContent(comment, "", ""));
 
 		sb.append("\n");
-		sb.append("public class ").append(javaClass.getSimpleName()).append("VO ");
+		sb.append("public class ").append(javaClass.getSimpleName()).append("VO");
 		if (this.getExtClass() != null && this.getExtClass().trim().length() > 0) {
-			sb.append("extends ").append(this.getExtClass().trim()).append("VO");
+			sb.append(" extends ").append(this.getExtClass().trim()).append("VO");
 		}
 		sb.append(" implements Serializable {");
 		sb.append("\n");
@@ -67,7 +67,6 @@ public class JavaEntityGenerator extends JavaFileGenerator {
 		sb.append("\n");
 		sb.append(getFields());
 
-		sb.append("\n");
 		sb.append("\n\t");
 		sb.append("public ").append(javaClass.getSimpleName()).append("VO").append("() {");
 		sb.append("\n\t");
@@ -79,7 +78,7 @@ public class JavaEntityGenerator extends JavaFileGenerator {
 
 		// file last '}'
 		sb.append("\n");
-		sb.append("}");
+		sb.append("\n}");
 
 		return sb.toString();
 	}
@@ -135,13 +134,11 @@ public class JavaEntityGenerator extends JavaFileGenerator {
 
 			sb.append(fieldName).append("(");
 
-			sb.append(fieldType).append(" ").append(soruceFieldName).append(" ) {");
+			sb.append(fieldType).append(" ").append(soruceFieldName).append(") {");
 
 			sb.append("\n\t\t");
 			sb.append("this.").append(soruceFieldName).append(" = ").append(soruceFieldName).append(";");
 			sb.append("\n\t}");
-
-			sb.append("\n");
 
 		}
 

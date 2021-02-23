@@ -104,7 +104,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 
 		sb.append("public class ").append(sourceName).append("Controller");
 //		sb.append("implements ").append(sourceName).append("Service");
-		sb.append("{");
+		sb.append(" {");
 		sb.append("\n");
 		
 		sb.append("\n");
@@ -145,8 +145,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		if(isImpl) {
 			sb.append("\n\t");
-			//sb.append("@RequestMapping(value=\"/add\",produces=\"text/html;charset=UTF-8\")");
-			sb.append("@RequestMapping(value=\"/add\")");
+			//sb.append("@RequestMapping(value = \"/add\",produces=\"text/html;charset=UTF-8\")");
+			sb.append("@RequestMapping(value = \"/add\")");
 			sb.append("\n\t");
 			sb.append("@ResponseBody");
 		}
@@ -155,7 +155,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append(voName);
 		sb.append(" ");
 		sb.append(varName);
-		sb.append(") throws Exception");
+		sb.append(") throws Exception ");
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
@@ -185,8 +185,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		if(isImpl) {
 			sb.append("\n\t");
-			//sb.append("@RequestMapping(value=\"/update\",produces=\"text/html;charset=UTF-8\")");
-			sb.append("@RequestMapping(value=\"/update\")");
+			//sb.append("@RequestMapping(value = \"/update\",produces=\"text/html;charset=UTF-8\")");
+			sb.append("@RequestMapping(value = \"/update\")");
 			sb.append("\n\t");
 			sb.append("@ResponseBody");			
 		}
@@ -196,7 +196,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append(voName);
 		sb.append(" ");
 		sb.append(varName);
-		sb.append(") throws Exception");
+		sb.append(") throws Exception ");
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
@@ -227,8 +227,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		if(isImpl) {
 			sb.append("\n\t");
-			//sb.append("@RequestMapping(value=\"/deleteById\",produces=\"text/html;charset=UTF-8\")");
-			sb.append("@RequestMapping(value=\"/deleteById\")");
+			//sb.append("@RequestMapping(value = \"/deleteById\",produces=\"text/html;charset=UTF-8\")");
+			sb.append("@RequestMapping(value = \"/deleteById\")");
 			sb.append("\n\t");
 			sb.append("@ResponseBody");			
 		}
@@ -239,7 +239,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append(" ");
 		sb.append(varName);
 //		sb.append("String id");
-		sb.append(") throws Exception");
+		sb.append(") throws Exception ");
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
@@ -272,8 +272,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		if(isImpl) {
 			sb.append("\n\t");
-			//sb.append("@RequestMapping(value=\"/queryById\",produces=\"text/html;charset=UTF-8\")");
-			sb.append("@RequestMapping(value=\"/queryById\")");
+			//sb.append("@RequestMapping(value = \"/queryById\",produces=\"text/html;charset=UTF-8\")");
+			sb.append("@RequestMapping(value = \"/queryById\")");
 			sb.append("\n\t");
 			sb.append("@ResponseBody");
 		}
@@ -286,7 +286,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append(" ");
 		sb.append(varName);
 //		sb.append("String id");
-		sb.append(") throws Exception");
+		sb.append(") throws Exception ");
 		
 		if(isImpl) {
 			sb.append("{");
@@ -320,8 +320,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 //		StringBuilder sb = new StringBuilder();
 //		if(isImpl) {
 //			sb.append("\n\t");
-//			//sb.append("@RequestMapping(value=\"/queryListByIds\",produces=\"text/html;charset=UTF-8\")");
-//			sb.append("@RequestMapping(value=\"/queryListByIds\")");
+//			//sb.append("@RequestMapping(value = \"/queryListByIds\",produces=\"text/html;charset=UTF-8\")");
+//			sb.append("@RequestMapping(value = \"/queryListByIds\")");
 //			sb.append("\n\t");
 //			sb.append("@ResponseBody");
 //		}
@@ -331,7 +331,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 //		//sb.append("queryListByIds(HttpServletRequest request, HttpServletResponse response, ");
 //		sb.append("queryListByIds(@RequestBody ");
 //		sb.append("List<String> idSet");
-//		sb.append(") throws Exception");
+//		sb.append(") throws Exception ");
 //		
 //		if(isImpl) {
 //			sb.append("{");
@@ -379,8 +379,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		if(isImpl) {
 			sb.append("\n\t");
-			//sb.append("@RequestMapping(value=\"/queryList\",produces=\"text/html;charset=UTF-8\")");
-			sb.append("@RequestMapping(value=\"/queryList\")");
+			//sb.append("@RequestMapping(value = \"/queryList\",produces=\"text/html;charset=UTF-8\")");
+			sb.append("@RequestMapping(value = \"/queryList\")");
 			sb.append("\n\t");
 			sb.append("@ResponseBody");
 		}
@@ -389,7 +389,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append("> ");
 		//sb.append("queryList(HttpServletRequest request, HttpServletResponse response, ");
 		sb.append("queryList(@RequestBody Map<String, Object> params");
-		sb.append(") throws Exception");
+		sb.append(") throws Exception ");
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
@@ -404,17 +404,21 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 			sb.append("\n\t\t");
 			sb.append("Object slimit = params.get(\"limit\");");
 			sb.append("\n\n\t\t");
-			sb.append("if(soffset == null || soffset.toString().length() ==0 ) {");
+			sb.append("if (soffset != null && soffset.toString().length() > 0) {");
 			sb.append("\n\t\t\t");
+			sb.append("offset = Integer.parseInt(soffset.toString());");
+			sb.append("\n\t\t");
+			sb.append("}");
+			sb.append("\n\t\t");
+			sb.append("if (slimit != null && slimit.toString().length() > 0) {");
+			sb.append("\n\t\t\t");
+			sb.append("limit = Integer.parseInt(slimit.toString());");
+			sb.append("\n\t\t");
+			sb.append("}");
+			sb.append("\n\t\t");
 			sb.append("params.put(\"offset\", offset);");
 			sb.append("\n\t\t");
-			sb.append("}");
-			sb.append("\n\t\t");
-			sb.append("if(slimit == null || slimit.toString().length() ==0 ) {");
-			sb.append("\n\t\t\t");
 			sb.append("params.put(\"limit\", limit);");
-			sb.append("\n\t\t");
-			sb.append("}");
 
 			
 			sb.append("\n\n\t\t");
@@ -449,15 +453,15 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		if(isImpl) {
 			sb.append("\n\t");
-			//sb.append("@RequestMapping(value=\"/queryListCount\",produces=\"text/html;charset=UTF-8\")");
-			sb.append("@RequestMapping(value=\"/queryListCount\")");
+			//sb.append("@RequestMapping(value = \"/queryListCount\",produces=\"text/html;charset=UTF-8\")");
+			sb.append("@RequestMapping(value = \"/queryListCount\")");
 			sb.append("\n\t");
 			sb.append("@ResponseBody");
 		}
 		sb.append("\n\t");
 		//sb.append("public int queryListCount(HttpServletRequest request, HttpServletResponse response, ");
 		sb.append("public int queryListCount(@RequestBody Map<String, Object> params");
-		sb.append(") throws Exception");
+		sb.append(") throws Exception ");
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
@@ -484,14 +488,14 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\n\t");
 		sb.append("/**");
-		sb.append("\n\t*");
-		sb.append("\n\t*@param parameterObject 参数表");
-		sb.append("\n\t*@param ");
+		sb.append("\n\t *");
+		sb.append("\n\t * @param parameterObject 参数表");
+		sb.append("\n\t * @param ");
 		sb.append(varName);
-		sb.append("\n\t*/");
+		sb.append("\n\t */");
 		
 		sb.append("\n\t");
-		sb.append("public void setParameterMap(Map<String, Object> parameterObject,");
+		sb.append("public void setParameterMap(Map<String, Object> parameterObject, ");
 		sb.append(voName);
 		sb.append(" ");
 		sb.append(varName);
@@ -525,7 +529,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 			sb.append("\n\t\t");
 			sb.append("parameterObject.put(\"");
 			sb.append(soruceFieldName);
-			sb.append("\",");
+			sb.append("\", ");
 			sb.append(varName);
 			if (fieldType.equalsIgnoreCase("boolean")) {
 				sb.append(".is");
@@ -533,7 +537,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 				sb.append(".get");
 			}
 			sb.append(fieldName);
-			sb.append("()); //");
+			sb.append("()); // ");
 			sb.append(comment.content());
 		}
 		sb.append("\n\t");
