@@ -74,6 +74,8 @@ public class JavaDaoGenerator extends JavaFileGenerator {
 		sb.append("\n");
 		sb.append(getDeleteById(voName, varVoName,varDaoName, false));
 		sb.append("\n");
+		sb.append(getDeleteByIds(voName, varVoName,varDaoName, false));
+		sb.append("\n");
 		sb.append(getQueryById(voName, varVoName,varDaoName, false));
 		sb.append("\n");
 		sb.append(getQueryListByIds(voName, varVoName,varDaoName, false));
@@ -178,6 +180,39 @@ public class JavaDaoGenerator extends JavaFileGenerator {
 			
 			sb.append(";");
 			return sb.toString();
+		}
+		
+		return sb.toString();
+		
+	}
+	
+	/**
+	 * 
+	 * @param voName
+	 * @param varName
+	 * @param varDaoName
+	 * @param isImpl
+	 * @return
+	 * 
+	 * void deleteByIds(Map<String, Object> parameterObject);
+	 */
+	private String getDeleteByIds(String voName,String varName,String varDaoName,boolean isImpl) {
+
+		StringBuilder sb = new StringBuilder();
+		if(isImpl) {
+			sb.append("\n\t");
+			sb.append("@Override");
+		}
+		sb.append("\n\t");
+		sb.append("void deleteByIds(Map<String, Object> parameterObject)");
+		if(isImpl) {
+			sb.append("{");
+			sb.append("\n\t\t");
+			sb.append(varDaoName);
+			sb.append(".deleteByIds(idSet);");
+			sb.append("\n\t}");
+		}else {
+			sb.append(";");
 		}
 		
 		return sb.toString();

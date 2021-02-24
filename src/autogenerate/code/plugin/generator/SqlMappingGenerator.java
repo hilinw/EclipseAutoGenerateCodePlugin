@@ -90,6 +90,8 @@ public class SqlMappingGenerator {
 		sb.append("\n\n");
 		sb.append(getDeleteById(tableName, voName, daoName));
 		sb.append("\n\n");
+		sb.append(getDeleteByIds(tableName, voName, daoName));
+		sb.append("\n\n");
 		sb.append(getQueryById(tableName, voName, daoName));
 		sb.append("\n\n");
 		sb.append(getQueryListByIds(tableName, voName, daoName));
@@ -270,6 +272,51 @@ public class SqlMappingGenerator {
 
 	}
 	
+	/**
+	 * 	
+	 <delete id="deleteByIds" parameterType="java.util.List">
+		DELETE FROM t_bs_user
+		WHERE FUSERID in
+			<foreach collection="idSet" item="id" index="index" open="(" close=")" separator=",">
+				#{id}
+			</foreach>
+		</delete>
+	 * 
+	 * @param tableName
+	 * @param voName
+	 * @param daoName
+	 * @return
+	 */
+	private String getDeleteByIds(String tableName, String voName, String daoName) {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("\t");
+		sb.append("<delete id=\"deleteByIds\" parameterType=\"java.util.List\">");
+		sb.append("\n\t\t");
+		sb.append("DELETE FROM ");
+		sb.append(tableName);
+		sb.append("\n\t\t");
+		if(hasPk) {
+			//主键名称不一定是fid
+			sb.append("WHERE ").append(this.pkColName).append(" in ");
+		}else {
+			sb.append("WHERE Fid in");
+		}
+
+		sb.append("\n\t\t\t");
+		sb.append("<foreach collection=\"idSet\" item=\"id\" index=\"index\" open=\"(\" close=\")\" separator=\",\">");
+		sb.append("\n\t\t\t\t");
+		sb.append("#{id}");
+		sb.append("\n\t\t\t");
+		
+		sb.append("</foreach>");
+
+		sb.append("\n\t\t");
+		
+		sb.append("\n\t</delete>");
+		return sb.toString();
+
+	}
 	
 	/**
 	 * <select id="queryListByIds" parameterType="java.lang.String"
@@ -318,10 +365,10 @@ public class SqlMappingGenerator {
 		return sb.toString();
 	}
 		
-	
+
 	/**
-	 * <select id="queryListByIds" parameterType="java.util.List"
-	 * resultType="xxx.vo.XxxxxVo" SELECT column1,column2.... 
+	 * <select id="queryListByIds" parameterType="java.util.List" resultMap="resultMap">
+	 * SELECT column1,column2.... 
 	 * FROM tableName LIMIT
 	 * Where id in idSet
 	 * 
@@ -333,15 +380,8 @@ public class SqlMappingGenerator {
 	private String getQueryListByIds(String tableName, String voName, String daoName) {
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("\t<select id=\"queryListByIds\" ");
-		sb.append("parameterType=\"java.util.List\" ");
-		// sb.append(voName);
-		// sp.append("\" ");
-//		sb.append("resultType=\"");
-//		sb.append(voName);
-//		sb.append("\">");
-		sb.append("resultMap=\"resultMap\">");
-		
+		sb.append("\t");
+		sb.append("<select id=\"queryListByIds\" parameterType=\"java.util.List\" resultMap=\"resultMap\">");	
 		sb.append("\n\t\t");
 		sb.append("SELECT ");
 		sb.append(getAddFields());
@@ -350,14 +390,12 @@ public class SqlMappingGenerator {
 		sb.append("FROM ");
 		sb.append(tableName);
 		sb.append("\n\t\t");
-//		sb.append("WHERE Fid in");
 		if(hasPk) {
 			//主键名称不一定是fid
 			sb.append("WHERE ").append(this.pkColName).append(" in");
 		}else {
 			sb.append("WHERE Fid in");
 		}
-		
 		
 		sb.append("\n\t\t\t");
 		sb.append("<foreach collection=\"idSet\" item=\"id\" index=\"index\" open=\"(\" close=\")\" separator=\",\">");
@@ -367,14 +405,12 @@ public class SqlMappingGenerator {
 		
 		sb.append("</foreach>");
 
-		//sb.append(getTestFields());
-
 		sb.append("\n\t\t");
-		//sb.append("LIMIT #{offset}, #{limit}");
 
 		sb.append("\n\t</select>");
 		return sb.toString();
 	}
+	
 	
 
 	/**

@@ -120,9 +120,11 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append("\n");
 		sb.append(getDeleteById(voName, varVoName,varServiceName, true));
 		sb.append("\n");
+		sb.append(getDeleteByIds(voName, varVoName,varServiceName));
+		sb.append("\n");
 		sb.append(getQueryById(voName, varVoName,varServiceName, true));
-//		sb.append("\n");
-//		sb.append(getQueryListByIds(voName, varVoName,varServiceName, true));
+		sb.append("\n");
+		sb.append(getQueryListByIds(voName, varVoName,varServiceName, true));
 		sb.append("\n");
 		sb.append(getQueryListMethod(voName, varVoName,varServiceName, true));
 		sb.append("\n");
@@ -266,6 +268,41 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		
 	}
 	
+	/**
+	 * 
+	 * @param voName
+	 * @param varName
+	 * @param varServiceName
+	 * @return
+	 * 
+	 * 	@RequestMapping(value = "/deleteByIds")
+		@ResponseBody
+		public void deleteByIds(@RequestBody List<String> idSet) throws Exception {
+			XxxxService.deleteByIds(idSet);
+		}
+	 */
+
+	private String getDeleteByIds(String voName,String varName,String varServiceName) {
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("\n\t");
+		//sb.append("@RequestMapping(value = \"/deleteById\",produces=\"text/html;charset=UTF-8\")");
+		sb.append("@RequestMapping(value = \"/deleteByIds\")");
+		sb.append("\n\t");
+		sb.append("@ResponseBody");			
+
+		sb.append("\n\t");
+		//sb.append("public void deleteById(HttpServletRequest request, HttpServletResponse response, ");
+		sb.append("public void deleteByIds(@RequestBody List<String> idSet) throws Exception {");
+		sb.append("\n\t\t");
+		sb.append(varServiceName);
+		sb.append(".deleteByIds(idSet);");
+		sb.append("\n\t}");
+		
+		return sb.toString();
+		
+	}
 	
 	private String getQueryById(String voName,String varName,String varServiceName,boolean isImpl) {
 
@@ -308,71 +345,45 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 	}	
 	
 	/**
-	 * @deprecated
+	 * 	@RequestMapping(value = "/queryListByIds")
+		@ResponseBody
+		public List<NewUserVO> queryListByIds(@RequestBody List<String> idSet) throws Exception {
+			return XxxxService.queryListByIds(idSet);
+		}
 	 * @param voName
 	 * @param varName
 	 * @param varServiceName
 	 * @param isImpl
 	 * @return
 	 */
-//	private String getQueryListByIds(String voName,String varName,String varServiceName,boolean isImpl) {
-//
-//		StringBuilder sb = new StringBuilder();
-//		if(isImpl) {
-//			sb.append("\n\t");
-//			//sb.append("@RequestMapping(value = \"/queryListByIds\",produces=\"text/html;charset=UTF-8\")");
-//			sb.append("@RequestMapping(value = \"/queryListByIds\")");
-//			sb.append("\n\t");
-//			sb.append("@ResponseBody");
-//		}
-//		sb.append("\n\t");
-//		sb.append("public List<").append(voName);
-//		sb.append("> ");
-//		//sb.append("queryListByIds(HttpServletRequest request, HttpServletResponse response, ");
-//		sb.append("queryListByIds(@RequestBody ");
-//		sb.append("List<String> idSet");
-//		sb.append(") throws Exception ");
-//		
-//		if(isImpl) {
-//			sb.append("{");
-//			sb.append("\n\t\t");
-//			sb.append("List<").append(voName).append("> ");
-//			sb.append(varName).append("s = null;");
-////			sb.append("\n\t\t");
-////			sb.append("Map<String, Object> parameterObject = new HashMap<String, Object>();");
-////			sb.append("\n\t\t");
-////			sb.append("setParameterMap(parameterObject, ");
-////			sb.append(varName);
-////			sb.append(");");
-//			
-//			sb.append("\n\t\t");
-////			sb.append("try {");
-////			sb.append("\n\t\t\t");
-//			sb.append(varName).append("s = ");
-//			sb.append(varServiceName);
-//			
-//			sb.append(".queryListByIds(");
-//			sb.append("idSet");
-//			sb.append(");");
-//			
-//			
-////			sb.append("\n\t\t");
-////			sb.append("} catch (Exception e) {");
-////			sb.append("\n\t\t\t");
-////			sb.append("e.printStackTrace();");
-////			sb.append("\n\t\t}");
-//			sb.append("\n\t\t");
-//			sb.append("return ");
-//			sb.append(varName).append("s;");
-//			sb.append("\n\t}");
-//		}else {
-//			
-//			sb.append(";");
-//			return sb.toString();
-//		}
-//		
-//		return sb.toString();
-//	}	
+	private String getQueryListByIds(String voName,String varName,String varServiceName,boolean isImpl) {
+
+		StringBuilder sb = new StringBuilder();
+		if(isImpl) {
+			sb.append("\n\t");
+			sb.append("@RequestMapping(value = \"/queryListByIds\")");
+			sb.append("\n\t");
+			sb.append("@ResponseBody");
+		}
+		sb.append("\n\t");
+		sb.append("public List<").append(voName);
+		sb.append("> ");
+		sb.append("queryListByIds(@RequestBody List<String> idSet) throws Exception ");
+		
+		if(isImpl) {
+			sb.append("{");
+			sb.append("\n\t\t");
+			sb.append("return ");
+			sb.append(varServiceName);
+			sb.append(".queryListByIds(idSet);");
+			sb.append("\n\t}");
+		}else {
+			sb.append(";");
+		}
+		
+		return sb.toString();
+	}	
+	
 	
 	private String getQueryListMethod(String voName,String varName,String varServiceName,boolean isImpl) {
 
