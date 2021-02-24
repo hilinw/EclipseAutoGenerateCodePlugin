@@ -410,7 +410,9 @@ public class SqlMappingGenerator {
 		sb.append("WHERE 1 = 1");
 
 		sb.append(getTestFields());
-
+		//增加排序字段
+		sb.append(getTestOrderbyFields());
+		
 		sb.append("\n\t\t");
 		sb.append("LIMIT #{offset}, #{limit}");
 
@@ -500,6 +502,54 @@ public class SqlMappingGenerator {
 		return sb.toString();
 
 	}
+	
+	
+	/**
+	* 增加通用排序字段
+	* <if test="orderby != null and orderby != '' ">
+	* 	order by '${orderby}'
+	* </if>
+	* （{"orderby":"FparentId ASC"}）：
+	* SELECT * FROM T_pt_templatetype WHERE 1 = 1  order by 'FparentId ASC'
+	* SELECT * FROM T_pt_templatetype WHERE 1 = 1  order by 'FparentId ASC'
+	 */
+	private String getTestOrderbyFields() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n\t\t\t");
+		
+		sb.append("<if test=\"orderby != null and orderby != '' \">");
+		sb.append("\n\t\t\t\t");			
+		sb.append("order by '${orderby}'");
+		sb.append("\n\t\t\t");			
+		sb.append("</if>");
+		
+		return sb.toString();
+	}
+	
+	/**
+	* 增加通用过滤，非标准字段
+	* <if test="filter != null and filter != '' ">
+	* and '${filter}'
+	* </if>
+	* 暂时不用吧，因为加了也起不了实际效果，如下sql实际导致数据库有数据却查不出数据（{"filter":"FCOID = 1"}）：
+	* SELECT * FROM T_pt_templatetype WHERE 1 = 1 and 'FCOID = 1' order by 'FparentId ASC'
+	 */
+	@SuppressWarnings("unused")
+	@Deprecated
+	private String getTestfilterFields() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n\t\t\t");
+		
+		sb.append("<if test=\"filter != null and filter != '' \">");
+		sb.append("\n\t\t\t\t");			
+		sb.append("and '${filter}'");
+		sb.append("\n\t\t\t");			
+		sb.append("</if>");
+		
+		return sb.toString();
+	}
+	
+	
 	/**
 	 * 使用like查询的字段
 	 */
