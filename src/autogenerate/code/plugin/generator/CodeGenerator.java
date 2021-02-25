@@ -149,7 +149,7 @@ public class CodeGenerator {
 		String filedir = "";
 		if(packageName.startsWith("metadata.")) {
 			String packagepath = packageName.substring(9);
-			filedir = packagepath.replace(",", File.pathSeparator);
+			filedir = packagepath.replace(".", File.separator);
 		}
 		File file = null;
 		{
