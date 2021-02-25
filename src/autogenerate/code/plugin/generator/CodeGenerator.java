@@ -62,6 +62,7 @@ public class CodeGenerator {
 					if (annotation != null) {
 						if (this.config.isGenerateVo()) {
 							this.generateVoFile(javaClass);
+							this.generatePropertiesFile(javaClass);
 						}
 
 					}
@@ -124,6 +125,55 @@ public class CodeGenerator {
 
 	}
 
+	/**
+	 * 生成多语言文件
+	 * @param javaClass
+	 * @return
+	 * @throws IOException
+	 */
+	private File generatePropertiesFile(Class<?> javaClass) throws IOException {
+
+		if (this.getProjectDir() == null) {
+			LOG.error("generatePropertiesFile error: ProjectDir is null!");
+			System.out.println("generatePropertiesFile error: ProjectDir is null!");			
+			return null;
+		}
+		String packageName = config.getPackageName();
+
+		PropertiesGenerator generator = new PropertiesGenerator(javaClass, packageName);
+		generator.setExtClass(config.getExtClass());
+		generator.setSameDir(config.isSameDir());
+		generator.generate();
+		
+		System.out.println("packageName: '" + packageName );
+		String filedir = "";
+		if(packageName.startsWith("metadata.")) {
+			String packagepath = packageName.substring(9);
+			filedir = packagepath.replace(",", File.pathSeparator);
+		}
+		File file = null;
+		{
+			file = generator.write(this.config.getWorkSpace());
+			this.fileTasks.add(new CopyTask(file, this.getPropertiesFileDir(filedir)));
+			LOG.info("generatePropertiesFile: '" + file.getName() + "'  ok.");
+			System.out.println("generatePropertiesFile: '" + file.getName() + "'  ok.");
+		}
+		{
+			file = generator.write_en(this.config.getWorkSpace());
+			this.fileTasks.add(new CopyTask(file, this.getPropertiesFileDir(filedir)));
+			LOG.info("generatePropertiesFile: '" + file.getName() + "'  ok.");
+			System.out.println("generatePropertiesFile: '" + file.getName() + "'  ok.");
+		}
+		{
+			file = generator.write_zh_cn(this.config.getWorkSpace());
+			this.fileTasks.add(new CopyTask(file, this.getPropertiesFileDir(filedir)));
+			LOG.info("generatePropertiesFile: '" + file.getName() + "'  ok.");
+			System.out.println("generatePropertiesFile: '" + file.getName() + "'  ok.");
+		}
+		return file;
+
+	}
+	
 	private File generateControllerFile(Class<?> javaClass) throws IOException {
 
 		String packageName = config.getPackageName();
@@ -312,6 +362,18 @@ public class CodeGenerator {
 		return file;
 
 	}
+	
+
+	/**
+	 * 生成Properties文件的路径。 
+	 * 如果是maven结构，生成在 src/main/resources目录下+vo包路径
+	 */
+	private File getPropertiesFileDir(String childDir) {
+
+		return getSqlFileDir(childDir);
+
+	}
+
 
 	public void copyFile() {
 		try {

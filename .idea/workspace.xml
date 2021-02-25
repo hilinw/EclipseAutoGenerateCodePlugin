@@ -101,6 +101,11 @@
       <workItem from="1614047901722" duration="71000" />
       <workItem from="1614050169189" duration="34000" />
       <workItem from="1614060279640" duration="43000" />
+      <workItem from="1614060696905" duration="613000" />
+      <workItem from="1614064893794" duration="137000" />
+      <workItem from="1614137964680" duration="46000" />
+      <workItem from="1614149266791" duration="47000" />
+      <workItem from="1614154448584" duration="99000" />
     </task>
     <task id="LOCAL-00001" summary="wlh提交">
       <created>1612491032517</created>
@@ -165,7 +170,70 @@
       <option name="project" value="LOCAL" />
       <updated>1614060307477</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="wlh提交 增加使用like查询的字段">
+      <created>1614060713459</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614060713459</updated>
+    </task>
+    <task id="LOCAL-00011" summary="wlh提交">
+      <created>1614060769192</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614060769192</updated>
+    </task>
+    <task id="LOCAL-00012" summary="wlh提交">
+      <created>1614060906113</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1614060906113</updated>
+    </task>
+    <task id="LOCAL-00013" summary="wlh提交">
+      <created>1614060933950</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1614060933950</updated>
+    </task>
+    <task id="LOCAL-00014" summary="wlh提交 增加使用范围查询的字段">
+      <created>1614064922527</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1614064922527</updated>
+    </task>
+    <task id="LOCAL-00015" summary="wlh提交 增加使用范围查询的字段">
+      <created>1614065017657</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1614065017657</updated>
+    </task>
+    <task id="LOCAL-00016" summary="wlh提交 增加orderby字段">
+      <created>1614137985086</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1614137985086</updated>
+    </task>
+    <task id="LOCAL-00017" summary="wlh提交 增加批量查询和删除">
+      <created>1614149286832</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1614149286832</updated>
+    </task>
+    <task id="LOCAL-00018" summary="wlh提交 增加批量查询和删除">
+      <created>1614154502259</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1614154502259</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -208,9 +276,12 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wlh提交" />
     <MESSAGE value="wlh提交 增加使用like查询的字段" />
-    <option name="LAST_COMMIT_MESSAGE" value="wlh提交 增加使用like查询的字段" />
+    <MESSAGE value="wlh提交" />
+    <MESSAGE value="wlh提交 增加使用范围查询的字段" />
+    <MESSAGE value="wlh提交 增加orderby字段" />
+    <MESSAGE value="wlh提交 增加批量查询和删除" />
+    <option name="LAST_COMMIT_MESSAGE" value="wlh提交 增加批量查询和删除" />
   </component>
   <component name="masterDetails">
     <states>
