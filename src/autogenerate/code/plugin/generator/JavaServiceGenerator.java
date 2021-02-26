@@ -196,6 +196,8 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 
 		sb.append(getAddMethod(voName, varVoName, varDaoName, true));
 		sb.append("\n");
+		sb.append(getSetDefaultValue(voName, varVoName));
+		sb.append("\n");
 		sb.append(getUpdateMethod(voName, varVoName, varDaoName, true));
 		sb.append("\n");
 		sb.append(getDeleteById(voName, varVoName, varDaoName, true));
@@ -255,7 +257,15 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 			sb.append("Assert.notNull(");
 			sb.append(varName);
 			sb.append(");");
-			sb.append("\n");
+			
+			sb.append("\n\t\t");
+			sb.append("//设置默认值，如创建人、创建时间、修改人、修改时间等。");
+			sb.append("\n\t\t");
+			sb.append(varName);
+			sb.append(" = setDefaultValue(");
+			sb.append(varName);
+			sb.append(");");
+			
 			sb.append("\n\t\t");
 			sb.append("validate(");
 			sb.append(varName);
@@ -276,7 +286,53 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 
 		return sb.toString();
 	}
+	
+	/**
+	 * 设置默认值方法
+	 * @param voName
+	 * @param varName
+	 * @return
+	 */
+	private String getSetDefaultValue(String voName, String varName) {
 
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("\n\t");
+		sb.append("/**");
+		sb.append("\n\t");
+		sb.append("* 设置默认值");
+		sb.append("\n\t");
+		sb.append("* @param ").append(varName);
+		sb.append("\n\t");
+		sb.append("* @return ").append(varName);
+		sb.append("\n\t");
+		sb.append("*/");
+		sb.append("\n\t");
+		sb.append("private ").append(voName).append(" setDefaultValue(").append(voName).append(" ").append(varName).append(") {");
+		sb.append("\n");
+		sb.append("\n\t\t");
+		sb.append("//TODO 设置默认值，如创建人、创建时间、修改人、修改时间等");
+		sb.append("\n\t\t");
+		sb.append("//").append(varName).append(".setCreateUser(\"admin\");");
+		sb.append("\n\t\t");
+		sb.append("//").append(varName).append(".setModifyUser(\"admin\");");
+		sb.append("\n\t\t");
+		sb.append("//").append(varName).append(".setCreateTime(new Date());");
+		sb.append("\n\t\t");
+		sb.append("//").append(varName).append(".setModifyTime(new Date());");
+		
+		sb.append("\n");
+		sb.append("\n\t\t");
+		sb.append("return ");
+		sb.append(varName);
+		sb.append(";");			
+		
+		sb.append("\n\t}");
+
+		return sb.toString();
+
+	}
+	
 	private String getUpdateMethod(String voName, String varName, String varDaoName, boolean isImpl) {
 
 		StringBuilder sb = new StringBuilder();

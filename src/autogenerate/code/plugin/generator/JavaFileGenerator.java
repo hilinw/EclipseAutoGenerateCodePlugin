@@ -191,14 +191,12 @@ public abstract class JavaFileGenerator {
 		// String s = field.getAnnotation(annotationClass);
 
 		String s = field.getType().getCanonicalName();
-		if ("java.lang.String".equals(s)) {
-			s = "String";
-		}
-		if (imports.contains(s)) {
-			int p = s.lastIndexOf(".");
-			if (p > 0) {
-				s = s.substring(p + 1);
-			}
+//		if ("java.lang.String".equals(s)) {
+//			s = "String";
+//		}
+		int p = s.lastIndexOf(".");
+		if (p > 0) {
+			s = s.substring(p + 1);
 		}
 
 		return s;
