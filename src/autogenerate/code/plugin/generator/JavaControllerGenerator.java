@@ -62,7 +62,7 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append("\n\n");
 
 		// 导入import
-//		sb.append("import java.util.HashMap;\n");
+		sb.append("import java.util.HashMap;\n");
 		sb.append("import java.util.List;\n");
 		sb.append("import java.util.Map;\n");
 		
@@ -130,6 +130,8 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		sb.append("\n");
 		sb.append(getQueryListCountMethod(voName, varVoName,varServiceName, true));
 		sb.append("\n");
+		sb.append(getQueryListAndCountMethod(voName, varVoName,varServiceName, true));
+		sb.append("\n");		
 		sb.append(getSetParameterMap(voName, varVoName));
 		sb.append("\n");
 
@@ -458,6 +460,75 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		
 		return sb.toString();
 	}
+	
+	/**
+	 * 带总记录数的查询
+	 * @param voName
+	 * @param varName
+	 * @param varServiceName
+	 * @param isImpl
+	 * @return
+	 */
+	private String getQueryListAndCountMethod(String voName,String varName,String varServiceName,boolean isImpl) {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n\t");
+		sb.append("/**");
+		sb.append("\n\t");
+		sb.append(" * 带总记录数的查询");
+		sb.append("\n\t");
+		sb.append(" * @param params");
+		sb.append("\n\t");
+		sb.append(" * @return");
+		sb.append("\n\t");
+		sb.append(" * @throws Exception");
+		sb.append("\n\t");
+		sb.append(" */");
+		
+		if(isImpl) {
+			sb.append("\n\t");
+			sb.append("@RequestMapping(value = \"/queryListAndCount\")");
+			sb.append("\n\t");
+			sb.append("@ResponseBody");
+		}
+		sb.append("\n\t");
+		sb.append("public Map<String, Object> queryListAndCount(@RequestBody Map<String, Object> params) throws Exception");
+		if(isImpl) {
+			sb.append(" {");
+			sb.append("\n");
+			sb.append("\n\t\t");
+			sb.append("List<").append(voName).append("> ");
+			sb.append(varName).append("s = ");
+			sb.append(varServiceName);
+			sb.append(".queryList(");
+			sb.append("params");
+			sb.append(");");
+			
+			sb.append("\n\t\t");
+			sb.append("int total  = ");
+			sb.append(varServiceName);
+			sb.append(".queryListCount(");
+			sb.append("params");
+			sb.append(");");
+			sb.append("\n\t\t");
+			sb.append("Map<String, Object> result = new HashMap<String, Object>();");
+			sb.append("\n\t\t");
+			sb.append("result.put(\"total\", total);");
+			sb.append("\n\t\t");
+			sb.append("result.put(\"data\", ");
+			sb.append(varName).append("s);");
+			
+			sb.append("\n");
+			sb.append("\n\t\t");
+			sb.append("return result;");
+			sb.append("\n\t}");
+		}else {
+			sb.append(";");
+			return sb.toString();
+		}
+		
+		return sb.toString();
+	}	
 	
 	private String getQueryListCountMethod(String voName,String varName,String varServiceName,boolean isImpl) {
 		
