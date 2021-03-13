@@ -163,17 +163,16 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
-//			sb.append("try {");
-//			sb.append("\n\t\t\t");
+			sb.append("try {");
+			sb.append("\n\t\t\t");
 			sb.append(varServiceName);
-			sb.append(".add(");
-			sb.append(varName);
-			sb.append(");");
-//			sb.append("\n\t\t");
-//			sb.append("} catch (Exception e) {");
-//			sb.append("\n\t\t\t");
-//			sb.append("e.printStackTrace();");
-//			sb.append("\n\t\t}");
+			sb.append(varName).append(" = ").append(varServiceName).append(".add(").append(varName).append(");");
+
+			sb.append("\n\t\t");
+			sb.append("} catch (Exception e) {");
+			sb.append("\n\t\t\t");
+			sb.append("e.printStackTrace();");
+			sb.append("\n\t\t}");
 			sb.append("\n\t}");
 		}else {
 			
@@ -204,17 +203,16 @@ public class JavaControllerGenerator extends JavaFileGenerator {
 		if(isImpl) {
 			sb.append("{");
 			sb.append("\n\t\t");
-//			sb.append("try {");
-//			sb.append("\n\t\t\t");
-			sb.append(varServiceName);
-			sb.append(".update(");
-			sb.append(varName);
-			sb.append(");");
-//			sb.append("\n\t\t");
-//			sb.append("} catch (Exception e) {");
-//			sb.append("\n\t\t\t");
-//			sb.append("e.printStackTrace();");
-//			sb.append("\n\t\t}");
+			sb.append("try {");
+			sb.append("\n\t\t\t");
+
+			sb.append(varName).append(" = ").append(varServiceName).append(".update(").append(varName).append(");");
+			
+			sb.append("\n\t\t");
+			sb.append("} catch (Exception e) {");
+			sb.append("\n\t\t\t");
+			sb.append("e.printStackTrace();");
+			sb.append("\n\t\t}");
 			sb.append("\n\t}");
 		}else {
 			

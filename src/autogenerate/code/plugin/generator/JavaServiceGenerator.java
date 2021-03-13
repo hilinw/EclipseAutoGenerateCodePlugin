@@ -247,7 +247,9 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 			sb.append("\n\t");
 		}
 
-		sb.append("public void add(").append(voName);
+//		sb.append("public void add(").append(voName);
+		sb.append("public ").append(voName);
+		sb.append(" add(").append(voName);
 		sb.append(" ");
 		sb.append(varName);
 		sb.append(") throws Exception ");
@@ -277,6 +279,12 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 			sb.append(".add(");
 			sb.append(varName);
 			sb.append(");");
+			
+			
+			sb.append("\n");
+			sb.append("\n\t\t");
+			sb.append("return ").append(varName).append(";");
+			
 			sb.append("\n\t}");
 		} else {
 
@@ -345,7 +353,10 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 			sb.append("@Transactional(readOnly = false, propagation = Propagation.REQUIRED)");
 			sb.append("\n\t");
 		}
-		sb.append("public void update(").append(voName);
+//		sb.append("public void update(").append(voName);
+		sb.append("public ").append(voName);
+		sb.append(" update(").append(voName);
+		
 		sb.append(" ");
 		sb.append(varName);
 		sb.append(") throws Exception ");
@@ -384,6 +395,11 @@ public class JavaServiceGenerator extends JavaFileGenerator {
 			sb.append(".update(");
 			sb.append(varName);
 			sb.append(");");
+			
+			sb.append("\n");
+			sb.append("\n\t\t");
+			sb.append("return ").append(varName).append(";");
+			
 			sb.append("\n\t}");
 		} else {
 
